@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import { Blog } from "./pages/blog/Blog";
 import Users from "./pages/users/Users";
+import { UserPanel } from "./pages/userPanel/UserPanel";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Link to="/about">About</Link>
         <Link to="/blog">Blog</Link>
         <Link to="/users">Users</Link>
+        <Link to="/userPanel">UserPanel</Link>
       </nav>
       <div style={{ padding: "20px" }}>
         <Routes initialEntries={["/"]}>
@@ -23,6 +25,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/userPanel" element={<UserPanel />} />
           <Route path="*" element={<h2>404 - Not Found</h2>} />
         </Routes>
       </div>
