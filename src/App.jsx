@@ -8,7 +8,6 @@ import Users from "./pages/users/Users";
 export default function App() {
   return (
     <div>
-      hi
       <nav
         style={{ padding: "10px", background: "#f4f4f4" }}
         className="flex gap-8"
