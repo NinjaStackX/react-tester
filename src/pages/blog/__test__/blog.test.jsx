@@ -1,10 +1,9 @@
-import { fireEvent, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, test, vi } from "vitest";
 import userEvent from "@testing-library/user-event";
 import { Blog } from "../Blog"; // <--- CHANGE IS HERE (Default Import)
 import { generate } from "random-words";
 import axios from "../../../__mock__/axios";
-
 import { renderi } from "../../../utils/test";
 
 describe("test header", () => {
@@ -73,7 +72,7 @@ describe("test header", () => {
 
     expect(contentElement).toHaveTextContent("This is updated blog content!");
   });
-  it("", () => {
+  it("test btnLike", () => {
     renderi(<Blog />);
     let n = 0;
     const btnLike = screen.getByTestId("btn-like");
