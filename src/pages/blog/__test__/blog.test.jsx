@@ -1,19 +1,12 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
 import { describe, expect, it, test, vi } from "vitest";
 import userEvent from "@testing-library/user-event";
 import { Blog } from "../Blog"; // <--- CHANGE IS HERE (Default Import)
 import { generate } from "random-words";
 import axios from "../__mocks__/axios";
-import { MemoryRouter } from "react-router-dom";
 
-function l(e) {
-  console.log("============");
-  console.log(e);
-  console.log("============");
-}
-function renderi(e) {
-  render(e, { wrapper: MemoryRouter });
-}
+import { renderi } from "../../../utils/test";
+
 describe("test header", () => {
   test("title test operations", () => {
     // 1. **RENDER** the component into the simulated DOM

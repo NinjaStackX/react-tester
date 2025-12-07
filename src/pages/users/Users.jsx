@@ -1,21 +1,35 @@
 // UsersPage.jsx
 import React, { useEffect, useState } from "react";
+import { logi } from "../../utils/test";
 
-export default function Users() {
+export default function Users({ isTset = false }) {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching users:", error);
-        setLoading(false);
-      });
+    if (isTset) {
+      fetch("/api/user")
+        .then((res) => res.json())
+        .then((data) => {
+          setUsers(data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching users:", error);
+          setLoading(false);
+        });
+    } else {
+      fetch("https://jsonplaceholder.typicode.com/users")
+        .then((res) => res.json())
+        .then((data) => {
+          setUsers(data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching users:", error);
+          setLoading(false);
+        });
+    }
   }, []);
 
   if (loading) {
@@ -39,7 +53,10 @@ export default function Users() {
             key={user.id}
             className="bg-white shadow-md rounded-lg p-5 border border-blue-100 hover:shadow-lg transition"
           >
-            <h2 className="text-xl font-semibold text-blue-700 mb-2">
+            <h2
+              className="text-xl font-semibold text-blue-700 mb-2"
+              role="username"
+            >
               {user.name}
             </h2>
             <p className="text-gray-600">
