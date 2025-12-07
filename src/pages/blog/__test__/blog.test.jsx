@@ -3,7 +3,7 @@ import { describe, expect, it, test, vi } from "vitest";
 import userEvent from "@testing-library/user-event";
 import { Blog } from "../Blog"; // <--- CHANGE IS HERE (Default Import)
 import { generate } from "random-words";
-import axios from "../__mocks__/axios";
+import axios from "../../../__mock__/axios";
 
 import { renderi } from "../../../utils/test";
 

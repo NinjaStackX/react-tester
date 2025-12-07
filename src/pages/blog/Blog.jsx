@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "./__mocks__/axios";
+import axios from "../../__mock__/axios";
 import { Link } from "react-router-dom";
 
 export function Blog() {

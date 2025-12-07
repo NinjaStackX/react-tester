@@ -8,9 +8,11 @@ export default function Home() {
       <p className="text-lg text-gray-600 mb-8 max-w-md text-center">
         This App was designed for testing <br /> "React testing Library"
       </p>
-      <button className="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 shadow-lg transition">
-        <Link to="/blog">Start showing apps</Link>
-      </button>
+      <Link to="/blog">
+        <button className="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 shadow-lg transition">
+          Start showing apps
+        </button>
+      </Link>
     </div>
   );
 }
