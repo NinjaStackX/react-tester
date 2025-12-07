@@ -7,7 +7,8 @@ export default function About() {
         {/* Profile Section */}
         <div className="text-center mb-16">
           <div className="w-32 h-32 bg-gray-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-4xl font-bold shadow-lg">
-            <img src="../../public/profile.png" alt="" />
+            {/* <img src="../../public/profile.png" alt="" /> */}
+            BM
           </div>
           <h2 className="text-4xl font-extrabold text-gray-900">
             About <span className="text-blue-600">Me</span>
