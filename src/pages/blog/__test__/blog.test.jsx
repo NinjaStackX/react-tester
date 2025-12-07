@@ -3,16 +3,21 @@ import { describe, expect, it, test, vi } from "vitest";
 import userEvent from "@testing-library/user-event";
 import { Blog } from "../Blog"; // <--- CHANGE IS HERE (Default Import)
 import { generate } from "random-words";
-import axios from "../../../__mocks__/axios";
+import axios from "../__mocks__/axios";
+import { MemoryRouter } from "react-router-dom";
+
 function l(e) {
   console.log("============");
   console.log(e);
   console.log("============");
 }
+function renderi(e) {
+  render(e, { wrapper: MemoryRouter });
+}
 describe("test header", () => {
   test("title test operations", () => {
     // 1. **RENDER** the component into the simulated DOM
-    render(<Blog />);
+    renderi(<Blog />);
 
     // 2. **QUERY** the rendered output
     const titleElement = screen.getByRole("heading", { level: 1 });
@@ -33,7 +38,7 @@ describe("test header", () => {
   });
   test("subTitle test operations", () => {
     // 1. **RENDER** the component into the simulated DOM
-    render(<Blog />);
+    renderi(<Blog />);
 
     // 2. **QUERY** the rendered output
     const contentElement = screen.getByRole("heading", { level: 2 });
@@ -54,7 +59,7 @@ describe("test header", () => {
   });
   test("content test operations", () => {
     // 1. **RENDER** the component into the simulated DOM
-    render(<Blog />);
+    renderi(<Blog />);
 
     // 2. **QUERY** the rendered output
     const contentElement = screen.getByTestId("paragraph-content");
@@ -76,7 +81,7 @@ describe("test header", () => {
     expect(contentElement).toHaveTextContent("This is updated blog content!");
   });
   it("", () => {
-    render(<Blog />);
+    renderi(<Blog />);
     let n = 0;
     const btnLike = screen.getByTestId("btn-like");
     expect(btnLike.textContent.trim()).toBe(`👍 Like ${n}`);
@@ -93,7 +98,7 @@ describe("test header", () => {
 
 describe("test Main View", () => {
   it("test comment input-area", () => {
-    render(<Blog />);
+    renderi(<Blog />);
     const btnComment = screen.getByTestId("btn-comment");
     const inputComment = screen.getByPlaceholderText("Write a comment...");
     fireEvent.click(btnComment);
@@ -101,7 +106,7 @@ describe("test Main View", () => {
   });
 
   test("should add a new comments to the list", async () => {
-    render(<Blog />);
+    renderi(<Blog />);
 
     const btnComment = screen.getByTestId("btn-comment");
     const inputComment = screen.getByPlaceholderText("Write a comment...");
@@ -125,7 +130,7 @@ describe("test Main View", () => {
 });
 describe("test Footer", () => {
   it("test Testing the presence of the footer Header ", () => {
-    render(<Blog />);
+    renderi(<Blog />);
 
     const header = screen.getByRole("heading", { level: 4 });
     const paragraphFooter = screen.getByTestId("paragraph-footer");
@@ -139,7 +144,7 @@ describe("test Footer", () => {
     const alertSpy = vi.spyOn(window, "alert").mockImplementation(() => {});
     const user = userEvent.setup();
 
-    render(<Blog />);
+    renderi(<Blog />);
 
     const button = screen.getByRole("button", { name: /say hello/i });
     await user.click(button);
@@ -152,7 +157,7 @@ describe("test Footer", () => {
   it("test btn hello by old method", () => {
     const alertSpy = vi.spyOn(window, "alert").mockImplementation(() => {});
 
-    render(<Blog />);
+    renderi(<Blog />);
 
     const button = screen.getByRole("button", { name: /say hello/i });
     fireEvent.click(button);
@@ -169,7 +174,7 @@ vi.mock("axios");
 
 describe("API Mocking Test", () => {
   it("should fetch and display user name", async () => {
-    render(<Blog />);
+    renderi(<Blog />);
     const userElement = await screen.findByText(/bashar/i);
     expect(userElement).toBeInTheDocument();
     expect(axios.get).toHaveBeenCalledWith("https://api.example.com/users");

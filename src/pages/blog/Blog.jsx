@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "../../__mocks__/axios";
+import axios from "./__mocks__/axios";
+import { Link } from "react-router-dom";
 
 export function Blog() {
   const [blogData, setBlogData] = useState("");
@@ -33,6 +34,12 @@ export function Blog() {
 
   return (
     <div className="max-w-3xl mx-auto p-8 font-sans bg-white shadow-xl rounded-2xl my-10 border border-gray-100">
+      {/* users btn */}
+      <div className=" text-right">
+        <Link to="/users" className="text-blue-500  font-bold hover:underline ">
+          Show all users
+        </Link>
+      </div>
       {/* Heading Section */}
       <div className="border-b pb-6 mb-6">
         <h1 className="text-4xl font-extrabold text-gray-900 mb-2 tracking-tight">
@@ -138,6 +145,7 @@ export function Blog() {
         >
           Say Hello 👋
         </button>
+        <br />
       </div>
     </div>
   );

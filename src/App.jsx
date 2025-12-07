@@ -2,10 +2,11 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Blog from "./pages/blog/Blog";
+import Users from "./pages/users/Users";
 
 export function App() {
   return (
-    <Router>
+    <Router basename="/react-tester">
       <nav
         style={{ padding: "10px", background: "#f4f4f4" }}
         className="flex gap-8"
@@ -22,8 +23,10 @@ export function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
+
+          <Route path="/users" element={<Users />} />
           {/* مسار لصفحة غير موجودة 404 */}
-          <Route path="*" element={<h2>404 - الصفحة غير موجودة</h2>} />
+          <Route path="*" element={<h2>404 - This page is not found</h2>} />
         </Routes>
       </div>
     </Router>
