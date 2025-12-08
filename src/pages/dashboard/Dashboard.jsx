@@ -22,12 +22,12 @@ export function Dashboard() {
       <header className="flex justify-between items-center mb-10 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
         <div>
           <h1 className="text-2xl font-bold text-gray-800">User Dashboard</h1>
-          <p className="text-gray-500">
-            Welcome back,{" "}
+          <h2 className="text-gray-500">
+            Welcome back,
             <span className="text-blue-600 font-semibold">
               {user?.name || "Guest"}
             </span>
-          </p>
+          </h2>
         </div>
         <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">
           {user?.name?.[0] || "U"}
